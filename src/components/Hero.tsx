@@ -89,7 +89,7 @@ const Hero = () => {
             {/* Title */}
             <div className="space-y-4">
               <p className={`text-sm tracking-widest font-semibold ${theme === 'dark' ? 'text-blue-300/80' : 'text-blue-700'}`}>
-                Hello! I'm Web Developer
+                Hello! I&apos;m Web Developer
               </p>
               <div className="flex flex-wrap gap-3 text-sm">
                 <span className="px-3 py-1 rounded-full bg-blue-500/10 text-blue-300">ReactJS</span>

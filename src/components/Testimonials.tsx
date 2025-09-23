@@ -50,7 +50,7 @@ const Testimonials = () => {
                 </div>
                 
                 <p className="text-gray-300 leading-relaxed">
-                  "{testimonial.text}"
+                  &quot;{testimonial.text}&quot;
                 </p>
                 
                 <div className="pt-4 border-t border-gray-700">

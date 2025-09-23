@@ -8,7 +8,7 @@ const About = () => {
   return (
     <section id="about" className="py-20">
       <div>
-        <SectionHeader title="About" subTitle="Hello! I'm Web Developer" />
+        <SectionHeader title="About" subTitle="Hello! I\'m Web Developer" />
 
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Content */}
@@ -21,7 +21,7 @@ const About = () => {
           >
             <div className="space-y-6">
               <h3 className="text-3xl font-semibold text-gray-300">
-                Hello! I'm Web Developer
+                Hello! I&apos;m Web Developer
               </h3>
               <h4 className="text-2xl text-blue-400">
                 ReactJS • NextJS • Full Stack Developer

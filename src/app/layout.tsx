@@ -3,7 +3,7 @@ import Sidebar from "@/components/Sidebar";
 import ThemeWrapper from "@/components/ThemeWrapper";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import type { Metadata } from "next";
-import { Inter, Open_Sans, Sniglet } from "next/font/google";
+import { Inter, Sniglet } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
