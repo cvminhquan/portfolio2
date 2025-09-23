@@ -13,7 +13,7 @@ import {
 import { useEffect, useState } from "react";
 
 const Hero = () => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
   const [activeSection, setActiveSection] = useState("about");
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);

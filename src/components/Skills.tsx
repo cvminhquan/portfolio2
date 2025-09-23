@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const Skills = () => {
   const skillUrl = 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/';
@@ -92,7 +93,7 @@ const Skills = () => {
                     <div className="bg-gray-900 p-2 rounded-xl border border-gray-700 hover:border-blue-500 transition-all duration-300 text-center group-hover:scale-105">
                       <div className="w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-2 bg-gray-600">
                         {skill.iconUrl ? (
-                          <img src={skill.iconUrl} alt={skill.name} className="w-8 h-8 object-contain" />
+                          <Image src={skill.iconUrl} alt={skill.name} width={32} height={32} className="w-8 h-8 object-contain" />
                         ) : (
                           <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded flex items-center justify-center text-white font-bold text-sm">
                             {skill.name.charAt(0)}

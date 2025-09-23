@@ -1,6 +1,7 @@
 'use client';
 
 import { Menu, X } from 'lucide-react';
+import Image from 'next/image';
 import { useState } from 'react';
 
 const Navigation = () => {
@@ -52,7 +53,7 @@ const Navigation = () => {
                   >
                     <span>{item.name}</span>
                     {item.dropdown && (
-                      <img src="/assets/icons/chevron-down.svg" alt="Dropdown" className="w-4 h-4" />
+                      <Image src="/assets/icons/chevron-down.svg" alt="Dropdown" width={16} height={16} />
                     )}
                   </a>
                   

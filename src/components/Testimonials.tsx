@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { SectionHeader } from './section-header/section-header';
 
 const Testimonials = () => {
@@ -45,7 +46,7 @@ const Testimonials = () => {
               <div className="space-y-4">
                 <div className="flex items-center space-x-1 mb-4">
                   {[...Array(5)].map((_, i) => (
-                    <img key={i} src="/assets/icons/star.svg" alt="Star" className="w-4 h-4 text-yellow-400" />
+                    <Image key={i} src="/assets/icons/star.svg" alt="Star" width={16} height={16} className="w-4 h-4 text-yellow-400" />
                   ))}
                 </div>
                 
