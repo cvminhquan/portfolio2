@@ -10,7 +10,7 @@ const ThemeWrapper = ({ children }: ThemeWrapperProps) => {
   const { theme } = useTheme();
   
   return (
-    <div className={`min-h-screen ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
+    <div className={`min-h-screen ${theme === 'dark' ? 'text-white' : 'bg-white text-gray-900'}`}>
       {children}
     </div>
   );

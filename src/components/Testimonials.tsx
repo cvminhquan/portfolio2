@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { SectionHeader } from './section-header/section-header';
 
 const Testimonials = () => {
   const testimonials = [
@@ -27,23 +28,9 @@ const Testimonials = () => {
   ];
 
   return (
-    <section id="testimonials" className="py-20 bg-gray-900">
-      <div className="max-w-6xl mx-auto px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
-            Testimonials
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full mb-6"></div>
-          <h3 className="text-2xl font-semibold text-gray-300">
-            Trusted By Clients
-          </h3>
-        </motion.div>
+    <section id="testimonials" className="py-10 lg:py-20">
+      <div>
+        <SectionHeader title="Testimonials" subTitle="Trusted By Clients" />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {testimonials.map((testimonial, index) => (

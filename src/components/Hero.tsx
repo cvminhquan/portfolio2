@@ -87,23 +87,32 @@ const Hero = () => {
             </motion.div>
 
             {/* Title */}
-                    <div className="space-y-6">
-                      <h1 className={`text-5xl md:text-7xl font-bold bg-gradient-to-r bg-clip-text text-transparent leading-tight ${
-                        theme === 'dark' 
-                          ? 'from-white via-blue-200 to-purple-200' 
-                          : 'from-gray-900 via-blue-600 to-purple-600'
-                      }`}>
-                        Chau Vu Minh Quan
-                      </h1>
-                      <h2 className={`text-2xl md:text-3xl font-semibold ${
-                        theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
-                      }`}>
-                        Web Developer
-                      </h2>
-                    </div>
+            <div className="space-y-4">
+              <p className={`text-sm tracking-widest font-semibold ${theme === 'dark' ? 'text-blue-300/80' : 'text-blue-700'}`}>
+                Hello! I'm Web Developer
+              </p>
+              <div className="flex flex-wrap gap-3 text-sm">
+                <span className="px-3 py-1 rounded-full bg-blue-500/10 text-blue-300">ReactJS</span>
+                <span className="px-3 py-1 rounded-full bg-purple-500/10 text-purple-300">NextJS</span>
+                <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300">Full Stack Developer</span>
+              </div>
+              <h1 className={`text-5xl md:text-7xl font-bold leading-tight ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                Build Modern Web
+                <br />
+                Solutions
+              </h1>
+            </div>
+
+            {/* Intro paragraph */}
+            <p className={`max-w-2xl text-base md:text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+              As a Web Developer with nearly 3 years of experience, I specialize in building
+              responsive, high‑performance web applications using ReactJS/NextJS on the frontend
+              and Node.js/NestJS or PHP on the backend. I focus on clean code, accessibility,
+              and great user experience to deliver scalable web solutions.
+            </p>
 
             {/* Contact Info */}
-            <div className="space-y-4">
+            <div className="space-y-2">
               <div className={`flex items-center space-x-3 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
                 <Mail size={20} />
                 <span className="text-base">cvminhquan@gmail.com</span>

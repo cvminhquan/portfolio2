@@ -1,29 +1,14 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
+import { SectionHeader } from "@/components/section-header/section-header";
+import { stats } from "@/mockup/common";
+import { motion } from "framer-motion";
 
 const About = () => {
-  const stats = [
-    { number: '3+', label: 'Years in Web Development' },
-    { number: '50+', label: 'Projects Completed' },
-    { number: '10+', label: 'Technologies Mastered' },
-  ];
-
   return (
-    <section id="about" className="py-20 bg-gray-800">
-      <div className="max-w-6xl mx-auto px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
-            About
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full"></div>
-        </motion.div>
+    <section id="about" className="py-20">
+      <div>
+        <SectionHeader title="About" subTitle="Hello! I'm Web Developer" />
 
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Content */}
@@ -48,7 +33,13 @@ const About = () => {
             </h1>
 
             <p className="text-xl text-gray-400 leading-relaxed">
-              As a Web Developer with nearly 3 years of experience, I specialize in building responsive, high-performance web applications using modern frontend frameworks like ReactJS/NextJS and backend technologies including PHP and Node.js/NestJS. I am passionate about code quality, system performance, and user experience, and I continuously improve my skills to deliver robust and scalable web solutions.
+              As a Web Developer with nearly 3 years of experience, I specialize
+              in building responsive, high-performance web applications using
+              modern frontend frameworks like ReactJS/NextJS and backend
+              technologies including PHP and Node.js/NestJS. I am passionate
+              about code quality, system performance, and user experience, and I
+              continuously improve my skills to deliver robust and scalable web
+              solutions.
             </p>
           </motion.div>
 
