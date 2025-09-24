@@ -19,15 +19,7 @@ export const projects: Project[] = [
     description:
       "Intelligent digital banking system, convenient payment platform, and global money transfer services.",
     image: "/assets/images/project/dnbcgroupcom.png",
-    technologies: [
-      "NextJS",
-      "React",
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "TypeScript",
-      "Tailwind",
-    ],
+    technologies: ["NextJS", "React", "HTML", "CSS", "TypeScript", "Tailwind"],
     liveUrl: "https://dnbcgroup.com/",
     githubUrl: "#",
   },
@@ -58,6 +50,25 @@ export const projects: Project[] = [
       "Docker",
     ],
     liveUrl: "https://secure-hk.dnbcnet.com/",
+    githubUrl: "#",
+  },
+  {
+    title: "https://www.bincorporation.com/",
+    category: "Corporate Platform",
+    description:
+      "Global payment service provider for individuals and businesses.",
+    image: "/assets/images/project/bincorporationcom.png",
+    technologies: [
+      "NextJS",
+      "React",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "TypeScript",
+      "Tailwind",
+      "Docker",
+    ],
+    liveUrl: "https://www.bincorporation.com/",
     githubUrl: "#",
   },
   {

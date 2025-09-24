@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const About = () => {
   return (
-    <section id="about">
+    <section id="about" className="py-10 md:py-20">
       <div>
         <SectionHeader title="About" subTitle="Hello! I&amp;m Web Developer" />
 

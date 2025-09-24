@@ -9,7 +9,6 @@ const Footer = () => {
   const quickLinks = [
     { label: 'About', target: 'about' },
     { label: 'Resume', target: 'resume' },
-    { label: 'Services', target: 'services' },
     { label: 'Portfolio', target: 'portfolio' },
     { label: 'Skills', target: 'skills' },
     { label: 'Contact', target: 'contact' },
