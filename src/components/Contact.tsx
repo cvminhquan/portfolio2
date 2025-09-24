@@ -28,7 +28,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-10 lg:py-20">
+    <section id="contact">
       <div>
         <SectionHeader
           title="Contact"
@@ -71,13 +71,10 @@ const Contact = () => {
                 Let’s Work Together
               </h4>
               <p className="text-gray-400 mb-6">
-                I’m a Front‑End Developer (React/Next.js, TypeScript, Tailwind). I’m
-                interested in full‑time roles, internships, and freelance projects.
-                If you think I’m a good fit, feel free to reach out.
+                I’m a Frontend Developer (React/Next.js, TypeScript, Tailwind).
+                I’m interested in full-time roles, internships, and freelance
+                projects. If you think I’m a good fit, feel free to reach out.
               </p>
-              <button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 rounded-full font-medium transition-all duration-200 transform hover:scale-105">
-                Say Hello
-              </button>
             </div>
           </motion.div>
 

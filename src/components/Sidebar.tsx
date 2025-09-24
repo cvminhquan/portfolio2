@@ -34,8 +34,8 @@ const Sidebar = ({ className }: { className?: string }) => {
       initial={{ x: -300, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.8 }}
-      className={`md:fixed relative left-0 top-20 md:top-0 h-full w-full md:w-96 border-r z-40 overflow-y-auto hidden lg:block ${className} ${
-        theme === "dark" ? "" : "bg-gray-100 border-gray-200"
+      className={`md:fixed relative left-0 top-20 md:top-0 h-full w-full md:w-96 z-40 overflow-hidden hidden lg:block ${className} ${
+        theme === "dark" ? "" : "bg-gray-100 border-r border-gray-200"
       }`}
     >
       <div className="md:p-8 h-full flex justify-center items-center flex-col">
@@ -68,7 +68,7 @@ const Sidebar = ({ className }: { className?: string }) => {
             >
               Chau Vu Minh Quan
             </h1>
-            <h2 className="text-lg font-semibold text-green-400">
+            <h2 className="text-lg font-semibold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
               WEB DEVELOPER
             </h2>
           </motion.div>
@@ -145,7 +145,7 @@ const Sidebar = ({ className }: { className?: string }) => {
             </button>
             <button
               onClick={handleContactMe}
-              className="w-full bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 flex items-center justify-center space-x-2"
+              className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 flex items-center justify-center space-x-2"
             >
               <Mail size={18} />
               <span>Contact Me</span>

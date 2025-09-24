@@ -26,6 +26,16 @@ const Hero = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+    return () => document.body.classList.remove("overflow-hidden");
+  }, [isOpen]);
+
   const headerIcons = [
     { icon: User, label: "About", target: "about" },
     { icon: FileText, label: "Resume", target: "resume" },
@@ -74,24 +84,25 @@ const Hero = () => {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8 }}
-      className={`fixed ${isScrolled ? 'top-0' : 'top-2'} inset-x-0 lg:left-96 z-[10000] sm:px-4`}
+      className={`fixed ${isScrolled ? 'top-2' : 'top-2'} lg:left-96 z-[10000] md:px-4`}
     >
-      <div className={`flex w-[calc(100%-24px)] max-w-[1200px] mx-auto justify-between items-center px-3 sm:px-4 py-3 rounded-[160px] ${
+      <div className={`flex w-screen m-0 max-w-[1200px] sm:mx-auto justify-between items-center px-4 py-3 rounded-[160px] ${
         isScrolled
           ? (theme === 'dark' ? 'bg-gray-900/85 border border-white/10 shadow-md' : 'bg-gray-100 border border-gray-200 shadow-md')
           : 'bg-[linear-gradient(123.51deg,rgba(215,237,237,0.1)_-61.8%,rgba(204,235,235,0.01))] border-t-[hsla(0,0%,100%,0.1)] border-t border-solid'
       }`}>
         {/* Left side - Profile */}
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-2 sm:space-x-3">
           <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
             C
           </div>
           <span
-            className={`font-medium ${
+            className={`font-medium text-xs sm:text-sm ${
               theme === "dark" ? "text-white" : "text-gray-900"
             }`}
           >
-            WEB DEVELOPER
+            <span className="hidden sm:inline">WEB DEVELOPER</span>
+            <span className="sm:hidden">WEB DEV</span>
           </span>
         </div>
 
@@ -177,21 +188,34 @@ const Hero = () => {
           />
           <motion.aside
             id="mobile-menu"
-            initial={{ y: -10, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.2 }}
-            className={`fixed z-50 sm:hidden top-16 left-3 right-3 rounded-2xl overflow-hidden border ${
+            initial={{ x: 320, opacity: 1 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.25 }}
+            className={`fixed z-[10001] sm:hidden inset-0 overflow-y-auto ${
               theme === "dark"
-                ? "bg-black/80 border-white/10"
-                : "bg-white/95 border-gray-200"
-            } shadow-xl`}
+                ? "bg-black/90"
+                : "bg-white"
+            }`}
             role="menu"
+            aria-modal="true"
           >
-            <div
-              className={`h-px ${
-                theme === "dark" ? "bg-white/10" : "bg-gray-200"
-              }`}
-            />
+            <div className="flex items-center justify-between px-5 py-4 border-b border-white/10">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                  C
+                </div>
+                <span className={`font-medium ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>Menu</span>
+              </div>
+              <button
+                className={`w-10 h-10 rounded-full flex items-center justify-center ${
+                  theme === 'dark' ? 'bg-white/10 text-gray-200' : 'bg-gray-200 text-gray-700'
+                }`}
+                aria-label="Close menu"
+                onClick={() => setIsOpen(false)}
+              >
+                <X size={18} />
+              </button>
+            </div>
 
             <nav className="py-2" aria-label="Mobile Navigation">
               {headerIcons.map((item) => {
@@ -200,28 +224,20 @@ const Hero = () => {
                   <button
                     key={item.label}
                     onClick={() => handleNavigate(item.target)}
-                    className={`w-full text-left px-5 py-3 flex items-center justify-between ${
+                    className={`w-full text-left px-5 py-4 flex items-center justify-between ${
                       theme === "dark"
                         ? "text-gray-200 hover:bg-white/10"
-                        : "text-gray-700 hover:bg-gray-100"
+                        : "text-gray-800 hover:bg-gray-100"
                     }`}
                     role="menuitem"
                   >
                     <span className="flex items-center gap-3">
-                      <item.icon size={16} />
-                      <span
-                        className={`text-sm ${isActive ? "font-semibold" : ""}`}
-                      >
+                      <item.icon size={18} />
+                      <span className={`text-base ${isActive ? "font-semibold" : ""}`}>
                         {item.label}
                       </span>
                     </span>
-                    <span
-                      className={`text-xs ${
-                        theme === "dark" ? "text-gray-500" : "text-gray-400"
-                      }`}
-                    >
-                      ⟶
-                    </span>
+                    <span className={`text-sm ${theme === 'dark' ? 'text-gray-500' : 'text-gray-400'}`}>⟶</span>
                   </button>
                 );
               })}

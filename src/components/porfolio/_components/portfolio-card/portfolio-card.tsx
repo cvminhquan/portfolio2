@@ -5,15 +5,16 @@ import Image from "next/image";
 
 export interface PortfolioCardProps {
   project: Project;
+  index: number;
 }
 
-export const PortfolioCard = ({ project }: PortfolioCardProps) => {
+export const PortfolioCard = ({ project, index }: PortfolioCardProps) => {
   return (
     <motion.div
       key={project.title}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.1 }}
+      transition={{ duration: 0.6, delay: index * 0.2 }}
       viewport={{ once: true }}
       className="group bg-gray-800 rounded-xl overflow-hidden border border-gray-700 hover:border-blue-500 transition-all duration-300"
     >
