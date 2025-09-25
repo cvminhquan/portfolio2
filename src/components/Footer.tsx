@@ -7,11 +7,12 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { label: 'About', target: 'about' },
-    { label: 'Resume', target: 'resume' },
-    { label: 'Portfolio', target: 'portfolio' },
-    { label: 'Skills', target: 'skills' },
-    { label: 'Contact', target: 'contact' },
+    { label: "About", target: "about" },
+    { label: "Resume", target: "resume" },
+    { label: "Portfolio", target: "portfolio" },
+    { label: "Skills", target: "skills" },
+    { label: "Blog", target: "blog" },
+    { label: "Contact", target: "contact" },
   ];
 
   const socialLinks = [
