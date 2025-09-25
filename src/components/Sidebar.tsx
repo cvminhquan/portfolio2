@@ -141,6 +141,8 @@ const Sidebar = ({ className }: { className?: string }) => {
                   href={social.href}
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   transition={{ duration: 0.3, delay: 1.3 + index * 0.1 }}
                   className={cn(
                     `w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer`,

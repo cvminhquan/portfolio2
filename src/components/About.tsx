@@ -33,13 +33,13 @@ const About = () => {
             </h1>
 
             <p className="text-sm md:text-xl flex flex-col gap-3 md:gap-4 text-gray-400 leading-relaxed">
-              <span className="font-bold">
-                Hi there, I’m a Frontend Developer with nearly 3 years of
+              <span>
+                Hi there, I’m a Frontend Developer with 3 years of
                 experience building responsive and high-performance web
                 applications using modern technologies such as React.js and
                 Next.js.
               </span>
-              <span className="font-bold">
+              <span>
                 Currently, as a Web Developer at BIN Corporation Group, I work
                 closely with product, SEO, and marketing teams to develop and
                 optimize websites in the fields of finance, e-commerce, and
@@ -47,7 +47,7 @@ const About = () => {
                 maintaining system stability, and ensuring SEO optimization to
                 drive traffic and business growth.{" "}
               </span>
-              <span className="font-bold">
+              <span>
                 Previously, I contributed to projects like papmall, payCEC, and
                 DNBC, where I transformed designs from Figma into responsive
                 websites, integrated APIs, and optimized performance across
@@ -55,6 +55,11 @@ const About = () => {
                 frontend development, cross-functional collaboration, and
                 delivering user-centric solutions that support both business and
                 customer needs.
+              </span>
+              <span className="font-bold">
+                My goal in the next 3 years is to become a Senior Frontend
+                Developer, taking on greater responsibilities in architecture,
+                performance optimization, and mentoring junior developers.
               </span>
             </p>
           </motion.div>
