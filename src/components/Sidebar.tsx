@@ -4,6 +4,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { Download, Github, Globe, Linkedin, Mail } from "lucide-react";
+import Image from "next/image";
 
 const Sidebar = ({ className }: { className?: string }) => {
   const { theme } = useTheme();
@@ -56,10 +57,16 @@ const Sidebar = ({ className }: { className?: string }) => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="relative w-32 h-32 mx-auto mb-6"
           >
-            <div className="w-full h-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-4xl font-bold text-white shadow-2xl">
-              C
+            <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-4xl font-bold text-white shadow-2xl">
+              <Image
+                className="w-full h-full rounded-full flex items-center justify-center text-4xl font-bold text-white shadow-2xl"
+                src="/assets/images/avt.jpg"
+                alt="Avatar"
+                width={100}
+                height={100}
+              />
             </div>
-            <div className="absolute -inset-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full opacity-20 blur-lg"></div>
+            {/* <div className="absolute -inset-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full opacity-20 blur-lg"></div> */}
           </motion.div>
 
           {/* Name and Title */}
