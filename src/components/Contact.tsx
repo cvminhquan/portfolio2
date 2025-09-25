@@ -89,7 +89,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="md:col-span-2 bg-gray-800 p-8 rounded-xl border border-gray-700"
+            className="md:col-span-2 bg-gray-800 p-4 md:p-8 rounded-xl border border-gray-700"
           >
             {isSubmitted && (
               <div

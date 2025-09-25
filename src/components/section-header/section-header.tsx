@@ -14,16 +14,16 @@ export const SectionHeader = ({
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="text-center mb-16 space-y-4"
+        className="text-center mb-12 md:mb-16 space-y-3 md:space-y-4"
       >
         <h2
           dangerouslySetInnerHTML={{ __html: title }}
-          className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent"
+          className="text-3xl md:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent"
         />
         <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full"></div>
         <div
           dangerouslySetInnerHTML={{ __html: subTitle }}
-          className="text-2xl font-semibold text-gray-300"
+          className="text-base md:text-2xl font-semibold text-gray-300"
         />
       </motion.div>
     </div>

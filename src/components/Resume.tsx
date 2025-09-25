@@ -56,7 +56,7 @@ const Resume = () => {
                     <h4 className="text-xl font-semibold text-white mb-2">
                       {exp.title}
                     </h4>
-                    <div className="flex items-center space-x-4 mb-2">
+                    <div className="flex flex-col md:flex-row items-start md:items-center space-x-4 mb-2">
                       <span className="text-blue-400 font-medium">
                         {exp.company}
                       </span>

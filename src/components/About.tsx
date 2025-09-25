@@ -6,40 +6,56 @@ import { motion } from "framer-motion";
 
 const About = () => {
   return (
-    <section id="about" className="py-10 md:py-20">
+    <section id="about" className="pt-20 md:py-20">
       <div>
-        <SectionHeader title="About"/>
+        <SectionHeader title="About" />
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-3 gap-16 items-center">
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            className="space-y-8 lg:col-span-2"
           >
-            <div className="space-y-6">
-              <h3 className="text-3xl font-semibold text-gray-300">
+            <div className="space-y-5 md:space-y-6">
+              <h3 className="text-2xl md:text-3xl font-semibold text-gray-300">
                 Hello! I&apos;m Web Developer
               </h3>
-              <h4 className="text-2xl text-blue-400">
+              <h4 className="text-lg md:text-2xl text-blue-400">
                 ReactJS • NextJS • Full Stack Developer
               </h4>
             </div>
 
-            <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent leading-tight">
+            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent leading-tight">
               Build Modern Web Solutions
             </h1>
 
-            <p className="text-xl text-gray-400 leading-relaxed">
-              As a Web Developer with nearly 3 years of experience, I specialize
-              in building responsive, high-performance web applications using
-              modern frontend frameworks like ReactJS/NextJS and backend
-              technologies including PHP and Node.js/NestJS. I am passionate
-              about code quality, system performance, and user experience, and I
-              continuously improve my skills to deliver robust and scalable web
-              solutions.
+            <p className="text-sm md:text-xl flex flex-col gap-3 md:gap-4 text-gray-400 leading-relaxed">
+              <span className="font-bold">
+                Hi there, I’m a Frontend Developer with nearly 3 years of
+                experience building responsive and high-performance web
+                applications using modern technologies such as React.js and
+                Next.js.
+              </span>
+              <span className="font-bold">
+                Currently, as a Web Developer at BIN Corporation Group, I work
+                closely with product, SEO, and marketing teams to develop and
+                optimize websites in the fields of finance, e-commerce, and
+                payment gateways. I’m responsible for implementing new features,
+                maintaining system stability, and ensuring SEO optimization to
+                drive traffic and business growth.{" "}
+              </span>
+              <span className="font-bold">
+                Previously, I contributed to projects like papmall, payCEC, and
+                DNBC, where I transformed designs from Figma into responsive
+                websites, integrated APIs, and optimized performance across
+                devices. These experiences have strengthened my skills in
+                frontend development, cross-functional collaboration, and
+                delivering user-centric solutions that support both business and
+                customer needs.
+              </span>
             </p>
           </motion.div>
 
@@ -60,10 +76,10 @@ const About = () => {
                 viewport={{ once: true }}
                 className="text-center p-8 bg-gray-900 rounded-2xl border border-gray-700 hover:border-blue-500 transition-colors duration-300"
               >
-                <div className="text-4xl md:text-5xl font-bold text-blue-400 mb-3">
+                <div className="text-3xl md:text-5xl font-bold text-blue-400 mb-2 md:mb-3">
                   {stat.number}
                 </div>
-                <div className="text-lg text-gray-300 font-medium">
+                <div className="text-sm md:text-lg text-gray-300 font-medium">
                   {stat.label}
                 </div>
               </motion.div>

@@ -86,7 +86,7 @@ const Hero = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="relative w-32 h-32 mb-8"
             >
-              <div className="w-full h-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-6xl font-bold text-white shadow-2xl">
+              <div className="w-full h-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-5xl md:text-6xl font-bold text-white shadow-2xl">
                 C
               </div>
               <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full opacity-20 blur-xl"></div>
@@ -101,7 +101,7 @@ const Hero = () => {
               >
                 Hello! I&amp;m Web Developer
               </p>
-              <div className="flex flex-wrap gap-3 text-sm">
+              <div className="flex flex-wrap gap-2 md:gap-3 text-xs md:text-sm">
                 <span className="px-3 py-1 rounded-full bg-blue-500/10 text-blue-300">
                   ReactJS
                 </span>
@@ -113,7 +113,7 @@ const Hero = () => {
                 </span>
               </div>
               <h1
-                className={`text-5xl md:text-7xl font-bold leading-tight ${
+                className={`text-4xl md:text-7xl font-bold leading-tight ${
                   theme === "dark" ? "text-white" : "text-gray-900"
                 }`}
               >
@@ -125,7 +125,7 @@ const Hero = () => {
 
             {/* Intro paragraph */}
             <p
-              className={`max-w-2xl text-base md:text-lg ${
+              className={`max-w-2xl text-sm md:text-lg ${
                 theme === "dark" ? "text-gray-300" : "text-gray-700"
               }`}
             >
@@ -137,17 +137,17 @@ const Hero = () => {
             </p>
 
             {/* Contact Info */}
-            <div className="space-y-2">
+            <div className="space-y-1 md:space-y-2">
               <div
                 className={`flex items-center space-x-3 ${
                   theme === "dark" ? "text-gray-300" : "text-gray-600"
                 }`}
               >
                 <Mail size={20} />
-                <span className="text-base">cvminhquan@gmail.com</span>
+                <span className="text-sm md:text-base">cvminhquan@gmail.com</span>
               </div>
               <p
-                className={`text-base ${
+                className={`text-sm md:text-base ${
                   theme === "dark" ? "text-gray-400" : "text-gray-500"
                 }`}
               >
@@ -159,14 +159,14 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 pt-6">
               <button
                 onClick={handleDownloadCV}
-                className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-4 rounded-full font-medium transition-all duration-200 transform hover:scale-105 flex items-center justify-center space-x-3 text-lg"
+                className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-medium transition-all duration-200 transform hover:scale-105 flex items-center justify-center space-x-3 text-base md:text-lg"
               >
                 <Download size={20} />
                 <span>View My CV</span>
               </button>
               <button
                 onClick={handleContactMe}
-                className={`border-2 px-8 py-4 rounded-full font-medium transition-all duration-200 transform hover:scale-105 text-lg ${
+                className={`border-2 px-6 md:px-8 py-3 md:py-4 rounded-full font-medium transition-all duration-200 transform hover:scale-105 text-base md:text-lg ${
                   theme === "dark"
                     ? "border-gray-600 hover:border-blue-500 text-gray-300 hover:text-white"
                     : "border-gray-300 hover:border-blue-500 text-gray-600 hover:text-gray-900"
@@ -191,7 +191,7 @@ const Hero = () => {
                   : "bg-white/60 border-gray-300"
               }`}
             >
-              <div className="text-center space-y-6">
+              <div className="text-center space-y-4 md:space-y-6">
                 <div className="w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-3xl font-bold text-white mx-auto shadow-xl">
                   C
                 </div>
@@ -203,14 +203,14 @@ const Hero = () => {
                   Chau Vu Minh Quan
                 </h3>
                 <p
-                  className={`text-lg ${
+                  className={`text-base md:text-lg ${
                     theme === "dark" ? "text-gray-300" : "text-gray-600"
                   }`}
                 >
                   Web Developer
                 </p>
                 <div
-                  className={`space-y-3 text-base ${
+                  className={`space-y-2 md:space-y-3 text-sm md:text-base ${
                     theme === "dark" ? "text-gray-400" : "text-gray-500"
                   }`}
                 >
@@ -218,11 +218,11 @@ const Hero = () => {
                   <p>District 4, Ho Chi Minh City</p>
                 </div>
                 <div className="flex space-x-4 pt-6">
-                  <button className="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-6 py-3 rounded-xl text-base font-medium transition-all duration-200">
+                  <button className="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-5 md:px-6 py-3 rounded-xl text-sm md:text-base font-medium transition-all duration-200">
                     View My CV
                   </button>
                   <button
-                    className={`flex-1 border px-6 py-3 rounded-xl text-base font-medium transition-all duration-200 ${
+                    className={`flex-1 border px-5 md:px-6 py-3 rounded-xl text-sm md:text-base font-medium transition-all duration-200 ${
                       theme === "dark"
                         ? "border-gray-600 hover:border-blue-500 text-gray-300 hover:text-white"
                         : "border-gray-300 hover:border-blue-500 text-gray-600 hover:text-gray-900"
