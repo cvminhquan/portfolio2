@@ -53,11 +53,11 @@ export const projects: Project[] = [
     githubUrl: "#",
   },
   {
-    title: "https://www.bincorporation.com/",
+    title: "BIN Corporation Group",
     category: "Corporate Platform",
     description:
       "Global payment service provider for individuals and businesses.",
-    image: "/assets/images/project/bincorporationcom.png",
+    image: "/assets/images/project/bincg.png",
     technologies: [
       "NextJS",
       "React",

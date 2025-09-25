@@ -1,5 +1,6 @@
 "use client";
 
+import { SectionHeader } from "@/components/section-header";
 import { motion } from "framer-motion";
 import { Calendar, MapPin } from "lucide-react";
 
@@ -29,18 +30,7 @@ const Resume = () => {
   return (
     <section id="resume" className="py-10 lg:py-20">
       <div>
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
-            Resume
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full"></div>
-        </motion.div>
+        <SectionHeader title="Resume" />
 
         <div className="grid lg:grid-cols-2 gap-12 items-stretch">
           {/* Experience */}
@@ -87,7 +77,7 @@ const Resume = () => {
           </motion.div>
 
           {/* Education */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -127,7 +117,7 @@ const Resume = () => {
                 </motion.div>
               ))}
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
     </section>

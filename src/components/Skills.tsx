@@ -1,5 +1,6 @@
 'use client';
 
+import { SectionHeader } from '@/components/section-header';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
@@ -57,22 +58,8 @@ const Skills = () => {
   return (
       <section id="skills">
       <div>
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
-            Skills
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full mb-6"></div>
-          <h3 className="text-2xl font-semibold text-gray-300">
-            Technologies I Work With
-          </h3>
-        </motion.div>
-
+        <SectionHeader title="Skills" />
+        
         <div className="grid gap-12 md:gap-16 grid-cols-1 md:grid-cols-2">
           {skillGroups.map((group, groupIdx) => (
             <div key={group.title} className={`${groupIdx === 0 ? 'md:col-span-2 lg:col-span-2' : ''}`}>

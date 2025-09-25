@@ -1,6 +1,7 @@
 "use client";
 
 import { useTheme } from "@/contexts/ThemeContext";
+import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { Download, Github, Globe, Linkedin, Mail } from "lucide-react";
 
@@ -8,7 +9,13 @@ const Sidebar = ({ className }: { className?: string }) => {
   const { theme } = useTheme();
 
   const handleDownloadCV = () => {
-    console.log("Download CV");
+    const link = document.createElement("a");
+    link.href = encodeURI("/WebDeveloper_ChauVuMinhQuan.pdf");
+    link.download = "WebDeveloper_ChauVuMinhQuan.pdf";
+    link.target = "_blank";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const handleContactMe = () => {
@@ -34,9 +41,10 @@ const Sidebar = ({ className }: { className?: string }) => {
       initial={{ x: -300, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.8 }}
-      className={`md:fixed relative left-0 top-20 md:top-0 h-full w-full md:w-96 z-40 overflow-hidden hidden lg:block ${className} ${
+      className={cn(
+        `md:fixed relative left-0 top-20 md:top-0 h-full w-full md:w-96 z-40 overflow-hidden hidden lg:block ${className}`,
         theme === "dark" ? "" : "bg-gray-100 border-r border-gray-200"
-      }`}
+      )}
     >
       <div className="md:p-8 h-full flex justify-center items-center flex-col">
         <div className="bg-[linear-gradient(123.51deg,rgba(215,237,237,0.1)_-61.8%,rgba(204,235,235,0.01))] p-8 rounded-[20px] border-t-[hsla(0,0%,100%,0.1)] border-t border-solid text-center space-y-8">
@@ -62,13 +70,19 @@ const Sidebar = ({ className }: { className?: string }) => {
             className="space-y-2"
           >
             <h1
-              className={`text-3xl font-bold ${
+              className={cn(
+                `text-3xl font-bold`,
                 theme === "dark" ? "text-white" : "text-gray-900"
-              }`}
+              )}
             >
               Chau Vu Minh Quan
             </h1>
-            <h2 className="text-lg font-semibold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+            <h2
+              className={cn(
+                "text-lg font-semibold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent",
+                theme === "dark" ? "text-white" : "text-gray-900"
+              )}
+            >
               WEB DEVELOPER
             </h2>
           </motion.div>
@@ -81,18 +95,27 @@ const Sidebar = ({ className }: { className?: string }) => {
             className="space-y-4"
           >
             <a
-              className={`flex items-center justify-center space-x-3 ${
+              className={cn(
+                `flex items-center justify-center space-x-3 cursor-pointer`,
                 theme === "dark" ? "text-gray-300" : "text-gray-600"
-              }`}
+              )}
               href="mailto:cvminhquan@gmail.com"
             >
               <Mail size={18} />
-              <span className="text-sm underline">cvminhquan@gmail.com</span>
+              <span
+                className={cn(
+                  "text-sm underline",
+                  theme === "dark" ? "text-white" : "text-gray-900"
+                )}
+              >
+                cvminhquan@gmail.com
+              </span>
             </a>
             <p
-              className={`text-sm ${
+              className={cn(
+                `text-sm`,
                 theme === "dark" ? "text-gray-400" : "text-gray-500"
-              }`}
+              )}
             >
               District 4, Ho Chi Minh City
             </p>
@@ -112,11 +135,12 @@ const Sidebar = ({ className }: { className?: string }) => {
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ duration: 0.3, delay: 1.3 + index * 0.1 }}
-                  className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 ${
+                  className={cn(
+                    `w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer`,
                     theme === "dark"
                       ? "bg-gray-800 text-gray-400 hover:text-white hover:bg-gray-700"
                       : "bg-gray-200 text-gray-600 hover:text-gray-900 hover:bg-gray-300"
-                  }`}
+                  )}
                   aria-label={social.label}
                 >
                   <social.icon size={18} />
@@ -134,18 +158,24 @@ const Sidebar = ({ className }: { className?: string }) => {
           >
             <button
               onClick={handleDownloadCV}
-              className={`w-full px-6 py-3 rounded-lg font-medium transition-all duration-200 flex items-center justify-center space-x-2 ${
+              className={cn(
+                `w-full px-6 py-3 rounded-lg font-medium transition-all duration-200 flex items-center justify-center space-x-2 cursor-pointer`,
                 theme === "dark"
                   ? "bg-gray-800 hover:bg-gray-700 text-white"
                   : "bg-gray-200 hover:bg-gray-300 text-gray-900"
-              }`}
+              )}
             >
               <Download size={18} />
               <span>View My CV</span>
             </button>
             <button
               onClick={handleContactMe}
-              className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 flex items-center justify-center space-x-2"
+              className={cn(
+                `w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 flex items-center justify-center space-x-2 cursor-pointer`,
+                theme === "dark"
+                  ? "bg-gray-800 hover:bg-gray-700 text-white"
+                  : "bg-gray-200 hover:bg-gray-300 text-gray-900"
+              )}
             >
               <Mail size={18} />
               <span>Contact Me</span>

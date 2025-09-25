@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 
 export const SectionHeader = ({
   title,
-  subTitle,
+  subTitle = "",
 }: {
   title: string;
-  subTitle: string;
+  subTitle?: string;
 }) => {
   return (
     <div>

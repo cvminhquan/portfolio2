@@ -3,6 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
 import { Mail, MapPin, Send } from "lucide-react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { SectionHeader } from "./section-header/section-header";
@@ -23,8 +24,12 @@ const Contact = () => {
     reset,
   } = useForm<ContactForm>({ resolver: zodResolver(contactSchema) });
 
-  const onSubmit = (data: ContactForm) => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const onSubmit = (_data: ContactForm) => {
+    setIsSubmitted(true);
     reset();
+    setTimeout(() => setIsSubmitted(false), 4000);
   };
 
   return (
@@ -86,6 +91,16 @@ const Contact = () => {
             viewport={{ once: true }}
             className="md:col-span-2 bg-gray-800 p-8 rounded-xl border border-gray-700"
           >
+            {isSubmitted && (
+              <div
+                role="status"
+                aria-live="polite"
+                className="mb-4 rounded-lg border border-green-700 bg-green-900/40 px-4 py-3 text-sm text-green-200"
+                tabIndex={0}
+              >
+                Thank you for your message! I will get back to you soon.
+              </div>
+            )}
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
