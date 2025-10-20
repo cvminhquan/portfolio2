@@ -4,6 +4,7 @@ import ThemeWrapper from "@/components/ThemeWrapper";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import type { Metadata } from "next";
 import { Inter, Sniglet } from "next/font/google";
+import NextTopLoader from "nextjs-toploader";
 import "./globals.css";
 
 const inter = Inter({
@@ -36,6 +37,17 @@ export default function RootLayout({
           <div className="w-full h-full bg-[#45e77b] dark:bg-[#0ea5e9] transition-colors duration-300 [mask:url('/assets/images/bg-shape.svg')] [mask-repeat:no-repeat] [mask-position:center] [mask-size:cover] [-webkit-mask:url('/assets/images/bg-shape.svg')] [-webkit-mask-repeat:no-repeat] [-webkit-mask-position:center] [-webkit-mask-size:cover]"></div>
         </div>
         <ThemeProvider>
+          <NextTopLoader
+            color="#45e77b"
+            initialPosition={0.08}
+            crawlSpeed={200}
+            height={3}
+            crawl={true}
+            showSpinner={false}
+            easing="ease"
+            speed={200}
+            shadow="0 0 10px #45e77b,0 0 5px #45e77b"
+          />
           <ThemeWrapper>
             <Sidebar />
             <MainLayout>{children}</MainLayout>

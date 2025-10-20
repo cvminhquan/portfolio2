@@ -1,6 +1,6 @@
 "use client";
 
-import { adminAuth } from "@/lib/blogStore";
+import { createClient } from '@/utils/supabase/client';
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -9,14 +9,29 @@ export default function AdminLoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const ok = adminAuth.signIn(email, password);
-    if (ok) {
-      router.replace("/admin");
-    } else {
-      setError("Sai email hoặc mật khẩu");
+    setLoading(true);
+    setError("");
+
+    try {
+      const supabase = createClient()
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error) {
+        setError("Sai email hoặc mật khẩu");
+      } else {
+        router.replace("/admin");
+      }
+    } catch (err) {
+      setError("Lỗi đăng nhập");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -40,6 +55,7 @@ export default function AdminLoginPage() {
             onChange={(e) => setEmail(e.target.value)}
             className="w-full rounded-lg border border-white/10 bg-transparent px-3 py-2 outline-none focus:border-blue-500"
             required
+            disabled={loading}
           />
         </label>
         <label className="block text-sm">
@@ -50,16 +66,18 @@ export default function AdminLoginPage() {
             onChange={(e) => setPassword(e.target.value)}
             className="w-full rounded-lg border border-white/10 bg-transparent px-3 py-2 outline-none focus:border-blue-500"
             required
+            disabled={loading}
           />
         </label>
         <button
           type="submit"
-          className="w-full rounded-lg border border-white/15 px-4 py-2 hover:border-blue-500 transition-colors"
+          className="w-full rounded-lg border border-white/15 px-4 py-2 hover:border-blue-500 transition-colors disabled:opacity-50"
+          disabled={loading}
         >
-          Đăng nhập
+          {loading ? "Đang đăng nhập..." : "Đăng nhập"}
         </button>
         <p className="text-xs text-gray-400 text-center">
-          Dùng biến môi trường NEXT_PUBLIC_ADMIN_EMAIL và NEXT_PUBLIC_ADMIN_PASSWORD
+          Đăng nhập bằng tài khoản Supabase
         </p>
       </form>
     </section>

@@ -1,68 +1,125 @@
-'use client';
-import { blogStore } from "@/lib/blogStore";
-import { blogPosts } from "@/mockup/blog";
+'use server';
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
-export default function BlogPage() {
-  const [posts, setPosts] = useState(() =>
-    [...blogPosts].sort(
-      (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-    )
-  );
+type BlogPost = {
+	id: string
+	slug: string
+	title: string
+	excerpt: string | null
+	cover_image_url: string | null
+	tags: string[] | null
+	category: string | null
+	published_at: string | null
+	updated_at: string | null
+	seo_title: string | null
+	seo_description: string | null
+}
 
-  useEffect(() => {
-    const merged = blogStore
-      .mergeWithDefaults(blogPosts)
-      .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
-    setPosts(merged);
-  }, []);
+export default async function BlogPage() {
+	let posts: BlogPost[] = []
+	
+	try {
+		const response = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/blog`, {
+			cache: 'no-store'
+		})
+		if (response.ok) {
+			const data = await response.json()
+			posts = data.posts || []
+		}
+	} catch (error) {
+		console.error('Failed to fetch posts:', error)
+	}
 
-  return (
-    <section>
-      <ul className="grid gap-4 md:gap-6">
-        {posts.map((post) => (
-          <li key={post.slug}>
-            <Link
-              href={post.externalUrl ? post.externalUrl : `/blog/${post.slug}`}
-              className="group block rounded-2xl border border-white/10 bg-white/5 hover:bg-white/[0.08] transition-colors"
-              {...(post.externalUrl ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-            >
-              <div className="p-5 md:p-6">
-                <div className="flex items-center gap-3 text-xs md:text-sm text-gray-400">
-                  <time dateTime={post.publishedAt}>
-                    {new Date(post.publishedAt).toLocaleDateString("vi-VN")}
-                  </time>
-                  <span>•</span>
-                  <span className="flex flex-wrap gap-2">
-                    {post.tags.map((t) => (
-                      <span
-                        key={t}
-                        className="px-2 py-0.5 rounded-md bg-white/5 border border-white/10"
-                      >
-                        {t}
-                      </span>
-                    ))}
+	return (
+    <main className="mx-auto pb-28">
+      <div className="py-16 sm:text-center">
+        <h1 className="text-3xl md:text-5xl text-center font-bold mb-4">
+          Blog
+        </h1>
+        <p className="text-sm md:text-base text-gray-400 text-center">
+          Chia sẻ về React, NextJS, UI/UX, hiệu năng và best practices.
+        </p>
+      </div>
+      <section className="space-y-8 md:space-y-16">
+         <div className="relative sm:ml-[calc(2rem+1px)] sm:pb-12 md:ml-[calc(3.5rem+1px)] lg:ml-[max(calc(14.5rem+1px),calc(100%-60rem))]">
+          <div className="space-y-16">
+            {posts.map((post) => (
+              <article key={post.slug} className="group relative">
+                <div
+                  className="absolute -inset-y-2.5 -inset-x-4 dark:group-hover:bg-accent/40 group-hover:bg-accent sm:rounded-2xl md:-inset-y-4 md:-inset-x-6 group-hover:bg-gray-800 transition-colors"
+                ></div>
+
+                <svg
+                  viewBox="0 0 9 9"
+                  className="text-gray-400 absolute right-full top-2 mr-6 hidden h-[calc(0.5rem+1px)] w-[calc(0.5rem+1px)] overflow-visible sm:block md:mr-12"
+                >
+                  <circle
+                    cx="4.5"
+                    cy="4.5"
+                    r="4.5"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  ></circle>
+                </svg>
+
+                <div className="relative">
+                  <h2 className="pt-8 text-base font-semibold tracking-tight lg:pt-0 text-white group-hover:text-blue-400 transition-colors">
+                    <Link href={`/blog/${post.slug}`} className="block">
+                      {post.title}
+                    </Link>
+                  </h2>
+
+                  <div className="z-10 mt-2 mb-4 line-clamp-2 text-gray-400">
+                    <p>{post.excerpt}</p>
+                  </div>
+
+                  <dl className="absolute left-0 top-0 lg:left-auto lg:right-full lg:mr-[calc(6.5rem+1px)]">
+                    <dt className="sr-only">Date</dt>
+                    <dd className="whitespace-nowrap text-sm text-gray-500">
+                      {post.published_at ? (
+                        <time dateTime={post.published_at}>
+                          {new Date(post.published_at).toLocaleDateString(
+                            "vi-VN",
+                            {
+                              year: "numeric",
+                              month: "2-digit",
+                              day: "2-digit",
+                            }
+                          )}
+                        </time>
+                      ) : null}
+                    </dd>
+                  </dl>
+                </div>
+
+                <Link
+                  className="flex items-center text-sm font-medium text-blue-400 group-hover:text-blue-300"
+                  title={post.title}
+                  href={`/blog/${post.slug}`}
+                >
+                  <span className="absolute -inset-y-2.5 -inset-x-4 sm:rounded-2xl md:-inset-y-4 md:-inset-x-6"></span>
+                  <span className="relative">
+                    Đọc thêm<span className="sr-only">, {post.title}</span>
                   </span>
-                </div>
-                <h2 className="mt-3 text-lg md:text-2xl font-semibold tracking-tight group-hover:text-white flex items-center gap-2">
-                  <span>{post.title}</span>
-                  {post.externalUrl ? (
-                    <span aria-label="External link" className="text-gray-400 group-hover:text-gray-300">↗</span>
-                  ) : null}
-                </h2>
-                <p className="mt-2 text-sm md:text-base text-gray-400">
-                  {post.excerpt}
-                </p>
-                <div className="mt-4 inline-flex items-center gap-2 text-sm text-blue-400">
-                  <span>Đọc thêm</span>
-                  <span className="transition-transform group-hover:translate-x-0.5">→</span>
-                </div>
-              </div>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </section>
+                  <svg
+                    className="relative mt-px ml-2.5 overflow-visible text-blue-400"
+                    width="3"
+                    height="6"
+                    viewBox="0 0 3 6"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M0 0L3 3L0 6"></path>
+                  </svg>
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }
