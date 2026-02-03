@@ -147,7 +147,7 @@ export async function generateMetadata({
 			images: [image],
 		},
 		twitter: {
-			card: (post.twitter_card as any) || "summary_large_image",
+			card: (post.twitter_card as unknown as "summary_large_image" | "summary" | "player" | "app") || "summary_large_image",
 			title: post.twitter_title || title,
 			description: post.twitter_description || description,
 			images: [image],
