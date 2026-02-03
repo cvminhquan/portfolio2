@@ -3,11 +3,13 @@
 import { useTheme } from "@/contexts/ThemeContext";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
-import { Download, Github, Globe, Linkedin, Mail } from "lucide-react";
+import { BookOpen, Download, FileText, FolderOpen, Github, Globe, Linkedin, Mail, PenTool, Send, User } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Sidebar = ({ className }: { className?: string }) => {
   const { theme } = useTheme();
+  const router = useRouter();
 
   const handleDownloadCV = () => {
     const link = document.createElement("a");
@@ -25,6 +27,29 @@ const Sidebar = ({ className }: { className?: string }) => {
       contactSection.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  const handleNavigate = (targetId: string) => {
+    if (targetId === "blog") {
+      router.push("/blog");
+      return;
+    }
+    
+    const section = document.getElementById(targetId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+    router.push(`/#${targetId}`);
+  };
+
+  const navigationItems = [
+    { icon: User, label: "About", target: "about" },
+    { icon: FileText, label: "Resume", target: "resume" },
+    { icon: FolderOpen, label: "Portfolio", target: "portfolio" },
+    { icon: BookOpen, label: "Blog", target: "blog" },
+    { icon: PenTool, label: "Skills", target: "skills" },
+    { icon: Send, label: "Contact", target: "contact" },
+  ];
 
   const socialLinks = [
     {
@@ -126,6 +151,38 @@ const Sidebar = ({ className }: { className?: string }) => {
             >
               District 4, Ho Chi Minh City
             </p>
+          </motion.div>
+
+          {/* Navigation Menu */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="space-y-3"
+          >
+            <h3 className={cn(
+              "text-sm font-semibold uppercase tracking-wider",
+              theme === "dark" ? "text-gray-400" : "text-gray-500"
+            )}>
+              Navigation
+            </h3>
+            <div className="grid grid-cols-2 gap-2">
+              {navigationItems.map((item, index) => (
+                <button
+                  key={item.label}
+                  onClick={() => handleNavigate(item.target)}
+                  className={cn(
+                    "flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 cursor-pointer",
+                    theme === "dark"
+                      ? "bg-gray-800/50 text-gray-300 hover:bg-gray-700 hover:text-white"
+                      : "bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-900"
+                  )}
+                >
+                  <item.icon size={16} />
+                  <span>{item.label}</span>
+                </button>
+              ))}
+            </div>
           </motion.div>
 
           {/* Social Links */}

@@ -7,11 +7,12 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { label: 'About', target: 'about' },
-    { label: 'Resume', target: 'resume' },
-    { label: 'Portfolio', target: 'portfolio' },
-    { label: 'Skills', target: 'skills' },
-    { label: 'Contact', target: 'contact' },
+    { label: "About", target: "about" },
+    { label: "Resume", target: "resume" },
+    { label: "Portfolio", target: "portfolio" },
+    { label: "Skills", target: "skills" },
+    { label: "Blog", target: "blog" },
+    { label: "Contact", target: "contact" },
   ];
 
   const socialLinks = [
@@ -43,16 +44,24 @@ const Footer = () => {
                 <span className="text-white font-bold text-sm">C</span>
               </div>
               <div>
-                <p className="text-white font-semibold leading-none">Chau Vu Minh Quan</p>
+                <p className="text-white font-semibold leading-none">
+                  Chau Vu Minh Quan
+                </p>
                 <p className="text-gray-400 text-sm">Front‑End Developer</p>
               </div>
             </div>
-            <p className="text-gray-400 text-sm">Building delightful, accessible interfaces with React, Next.js, and Tailwind CSS.</p>
+            <p className="text-gray-400 text-sm">
+              Building delightful, accessible interfaces with React, Next.js,
+              and Tailwind CSS.
+            </p>
           </div>
 
           <div className="space-y-4">
             <h4 className="text-white font-semibold">Quick Links</h4>
-            <nav className="flex flex-wrap gap-3" aria-label="Footer Navigation">
+            <nav
+              className="flex flex-wrap gap-3"
+              aria-label="Footer Navigation"
+            >
               {quickLinks.map((item) => (
                 <button
                   key={item.target}
@@ -82,9 +91,26 @@ const Footer = () => {
             </div>
           </div>
         </motion.div>
-
+        <div className="flex xl:justify-start justify-between gap-2 xl:gap-10 mt-10">
+          <a
+            href="viber://chat/?number=84984759999"
+            target="_blank"
+            className="bg-red-500 text-white px-4 py-2 rounded-md"
+          >
+            VIBER ME
+          </a>
+          <a
+            href="viber://pa?chatURI=ntbindustrialparK"
+            target="_blank"
+            className="bg-blue-500 text-white px-4 py-2 rounded-md"
+          >
+            Viber ME 2
+          </a>
+        </div>
         <div className="mt-10 h-px bg-white/10" />
-        <div className="pt-6 text-center text-gray-400 text-sm">© {currentYear} Chau Vu Minh Quan. All rights reserved.</div>
+        <div className="pt-6 text-center text-gray-400 text-sm">
+          © {currentYear} Chau Vu Minh Quan. All rights reserved.
+        </div>
       </div>
     </footer>
   );

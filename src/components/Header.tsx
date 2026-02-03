@@ -2,6 +2,7 @@
 import { useTheme } from "@/contexts/ThemeContext";
 import { motion } from "framer-motion";
 import {
+  BookOpen,
   FileText,
   FolderOpen,
   Menu,
@@ -10,10 +11,12 @@ import {
   User,
   X
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const Hero = () => {
   const { theme } = useTheme();
+  const router = useRouter();
   const [activeSection, setActiveSection] = useState("about");
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -40,14 +43,25 @@ const Hero = () => {
     { icon: User, label: "About", target: "about" },
     { icon: FileText, label: "Resume", target: "resume" },
     { icon: FolderOpen, label: "Portfolio", target: "portfolio" },
+    { icon: BookOpen, label: "Blog", target: "blog" },
     { icon: PenTool, label: "Skills", target: "skills" },
     { icon: Send, label: "Contact", target: "contact" },
   ];
 
   const handleNavigate = (targetId: string) => {
+    if (targetId === "blog") {
+      router.push("/blog");
+      setIsOpen(false);
+      return;
+    }
+    
     const section = document.getElementById(targetId);
-    if (!section) return;
-    section.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+      setIsOpen(false);
+      return;
+    }
+    router.push(`/#${targetId}`);
     setIsOpen(false);
   };
 
