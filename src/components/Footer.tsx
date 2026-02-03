@@ -100,7 +100,7 @@ const Footer = () => {
             VIBER ME
           </a>
           <a
-            href="viber://pa?chatURI=ntbindustrialparK"
+            href="viber://pa?chatURI=ntbindustrialpark"
             target="_blank"
             className="bg-blue-500 text-white px-4 py-2 rounded-md"
           >
