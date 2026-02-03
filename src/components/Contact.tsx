@@ -26,7 +26,7 @@ const Contact = () => {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const onSubmit = (_data: ContactForm) => {
+  const onSubmit = () => {
     setIsSubmitted(true);
     reset();
     setTimeout(() => setIsSubmitted(false), 4000);
