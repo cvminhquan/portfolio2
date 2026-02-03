@@ -93,25 +93,11 @@ const Footer = () => {
         </motion.div>
         <div className="flex xl:justify-start justify-between gap-2 xl:gap-10 mt-10">
           <a
-            href="viber://chat/?number=84984759999"
-            target="_blank"
-            className="bg-red-500 text-white px-4 py-2 rounded-md"
-          >
-            VIBER ME
-          </a>
-          <a
             href="viber://pa?chatURI=ntbindustrialpark"
             target="_blank"
             className="bg-blue-500 text-white px-4 py-2 rounded-md"
           >
             Viber ME 2
-          </a>
-          <a
-            href="viber://pa?chatURI=vibervn"
-            target="_blank"
-            className="bg-blue-500 text-white px-4 py-2 rounded-md"
-          >
-            Viber VOICE CALL
           </a>
         </div>
         <div className="mt-10 h-px bg-white/10" />
