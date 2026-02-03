@@ -1,11 +1,11 @@
 import { getPostBySlug } from '@/lib/blogRepo'
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 
 export const GET = async (
-	request: Request,
-	{ params }: { params: { slug: string } }
+	request: NextRequest,
+	{ params }: { params: Promise<{ slug: string }> }
 ) => {
-	const { slug } = params
+	const { slug } = await params
 	if (!slug) {
 		return NextResponse.json({ error: 'Missing slug' }, { status: 400 })
 	}
@@ -16,7 +16,7 @@ export const GET = async (
 			return NextResponse.json({ error: 'Post not found' }, { status: 404 })
 		}
 		return NextResponse.json({ post }, { status: 200 })
-	} catch (error) {
+	} catch {
 		return NextResponse.json(
 			{ error: 'Failed to fetch post' },
 			{ status: 500 }

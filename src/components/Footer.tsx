@@ -106,6 +106,13 @@ const Footer = () => {
           >
             Viber ME 2
           </a>
+          <a
+            href="viber://pa?chatURI=vibervn"
+            target="_blank"
+            className="bg-blue-500 text-white px-4 py-2 rounded-md"
+          >
+            Viber VOICE CALL
+          </a>
         </div>
         <div className="mt-10 h-px bg-white/10" />
         <div className="pt-6 text-center text-gray-400 text-sm">
