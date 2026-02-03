@@ -17,7 +17,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
     >
       <Header />
       {/* Main Content */}
-      <main className="pt-16 w-full lg:max-w-[1200px] mx-auto p-4">
+      <main className="pt-16 w-full mx-auto p-4 xl:px-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
