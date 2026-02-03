@@ -1,31 +1,13 @@
-'use server';
 import Link from "next/link";
+import { getPublishedPosts, type BlogPostRow } from '@/lib/blogRepo'
 
-type BlogPost = {
-	id: string
-	slug: string
-	title: string
-	excerpt: string | null
-	cover_image_url: string | null
-	tags: string[] | null
-	category: string | null
-	published_at: string | null
-	updated_at: string | null
-	seo_title: string | null
-	seo_description: string | null
-}
+export const dynamic = 'force-dynamic'
 
 export default async function BlogPage() {
-	let posts: BlogPost[] = []
+	let posts: BlogPostRow[] = []
 	
 	try {
-		const response = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/blog`, {
-			cache: 'no-store'
-		})
-		if (response.ok) {
-			const data = await response.json()
-			posts = data.posts || []
-		}
+		posts = await getPublishedPosts()
 	} catch (error) {
 		console.error('Failed to fetch posts:', error)
 	}

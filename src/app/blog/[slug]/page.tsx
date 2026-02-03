@@ -1,56 +1,21 @@
+import { getPostBySlug, type BlogPostRow } from '@/lib/blogRepo';
 import { renderBasicMarkdown } from "@/lib/markdown";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Script from "next/script";
 
+export const dynamic = 'force-dynamic'
+
 type PageProps = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
-type BlogPost = {
-	id: string
-	slug: string
-	title: string
-	excerpt: string | null
-	content_md: string | null
-	content_html: string | null
-	cover_image_url: string | null
-	author_name: string | null
-	author_avatar_url: string | null
-	reading_time_minutes: number | null
-	tags: string[] | null
-	category: string | null
-	language: string | null
-	source: string | null
-	status: 'draft' | 'published' | 'archived'
-	published_at: string | null
-	updated_at: string | null
-	canonical_url: string | null
-	seo_title: string | null
-	seo_description: string | null
-	seo_keywords: string[] | null
-	meta_robots: string | null
-	og_title: string | null
-	og_description: string | null
-	og_image_url: string | null
-	twitter_card: string | null
-	twitter_title: string | null
-	twitter_description: string | null
-	twitter_image_url: string | null
-	structured_data: Record<string, unknown> | null
-}
-
 export default async function BlogDetailPage({ params }: PageProps) {
-	let post: BlogPost | null = null
+	const { slug } = await params
+	let post: BlogPostRow | null = null
 	
 	try {
-		const response = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/blog/${params.slug}`, {
-			cache: 'no-store'
-		})
-		if (response.ok) {
-			const data = await response.json()
-			post = data.post
-		}
+		post = await getPostBySlug(slug)
 	} catch (error) {
 		console.error('Failed to fetch post:', error)
 	}
@@ -114,16 +79,11 @@ export default async function BlogDetailPage({ params }: PageProps) {
 export async function generateMetadata({
 	params,
 }: PageProps): Promise<Metadata> {
-	let post: BlogPost | null = null
+	const { slug } = await params
+	let post: BlogPostRow | null = null
 	
 	try {
-		const response = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/blog/${params.slug}`, {
-			cache: 'no-store'
-		})
-		if (response.ok) {
-			const data = await response.json()
-			post = data.post
-		}
+		post = await getPostBySlug(slug)
 	} catch (error) {
 		console.error('Failed to fetch post for metadata:', error)
 	}
@@ -132,7 +92,7 @@ export async function generateMetadata({
 
 	const title = post.seo_title || post.title;
 	const description = post.seo_description || post.excerpt || "";
-	const url = post.canonical_url || `https://yourdomain.com/blog/${params.slug}`;
+	const url = post.canonical_url || `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${slug}`;
 	const image = post.og_image_url || post.cover_image_url || "/default-og.png";
 
 	return {
