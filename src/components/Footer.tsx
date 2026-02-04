@@ -97,6 +97,13 @@ const Footer = () => {
             target="_blank"
             className="bg-blue-500 text-white px-4 py-2 rounded-md"
           >
+            Viber ME 
+          </a>
+          <a
+            href="viber://contact?number=%2B84984759999"
+            target="_blank"
+            className="bg-red-500 text-white px-4 py-2 rounded-md"
+          >
             Viber ME 2
           </a>
         </div>
