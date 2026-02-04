@@ -91,22 +91,6 @@ const Footer = () => {
             </div>
           </div>
         </motion.div>
-        <div className="flex xl:justify-start justify-between gap-2 xl:gap-10 mt-10">
-          <a
-            href="viber://pa?chatURI=ntbindustrialpark"
-            target="_blank"
-            className="bg-blue-500 text-white px-4 py-2 rounded-md"
-          >
-            Viber ME 
-          </a>
-          <a
-            href="viber://contact?number=%2B84984759999"
-            target="_blank"
-            className="bg-red-500 text-white px-4 py-2 rounded-md"
-          >
-            Viber ME 2
-          </a>
-        </div>
         <div className="mt-10 h-px bg-white/10" />
         <div className="pt-6 text-center text-gray-400 text-sm">
           © {currentYear} Chau Vu Minh Quan. All rights reserved.
